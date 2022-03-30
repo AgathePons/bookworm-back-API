@@ -1,0 +1,19 @@
+{
+  "name": "projet-idle-game-back",
+  "version": "1.0.0",
+  "description": "api for bookworm",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/O-clock-Zagreus/projet-idle-game-back.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/O-clock-Zagreus/projet-idle-game-back/issues"
+  },
+  "homepage": "https://github.com/O-clock-Zagreus/projet-idle-game-back#readme"
+}
