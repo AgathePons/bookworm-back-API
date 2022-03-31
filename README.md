@@ -67,3 +67,6 @@ pug homepage with link to doc
 
 ### Documentation using the OpenAPI Specification
 
+### COMMENTS
+
+SELECT qui envoie les informations de la table d'association pour un user sous format json

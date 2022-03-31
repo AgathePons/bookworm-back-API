@@ -14,7 +14,8 @@ VALUES
   ('Agathe', 'agathe_cheffe_supreme@wanadoudou.fr', 'udix9RNG1sqt1QDE'),
   ('Philémon', 'philou@wanadoudou.fr', 'r4V8yLUE6gS495GM'),
   ('Bilal', 'bilal_r0xx0r@wanadoudou.fr', 'ju746XUpD1tBKBsQ'),
-  ('Thibaud', 'un_thibaud_deux_thibaud@wanadoudou.fr', 'Tq6H66iJFGn3r5TL');
+  ('Thibaud', 'un_thibaud_deux_thibaud@wanadoudou.fr', 'Tq6H66iJFGn3r5TL'),
+  ('John Doe', 'johndoe@mail.com', 'azerty');
 
 INSERT INTO
   "generator" ("type", "name", "text", "clic_flat_value", "clic_percent_value", "idle_flat_value", "idle_percent_value", "starting_cost","cost_factor", "order")
