@@ -1,19 +1,44 @@
 {
-  "name": "projet-idle-game-back",
+  "devDependencies": {
+    "eslint": "^8.11.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "node-dev": "^7.2.0",
+    "prettier": "^2.5.1",
+    "prettier-plugin-sql": "^0.4.1"
+  },
+  "name": "api_base_tools",
+  "description": "base architecture for API with some useful tools",
   "version": "1.0.0",
-  "description": "api for bookworm",
   "main": "index.js",
+  "dependencies": {
+    "bunyan": "^1.8.15",
+    "cors": "^2.8.5",
+    "debug": "^4.3.3",
+    "dotenv": "^16.0.0",
+    "express": "^4.17.3",
+    "express-jsdoc-swagger": "^1.6.7",
+    "joi": "^17.6.0",
+    "pg": "^8.7.3",
+    "pug": "^3.0.2"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "dev": "DEBUG=*,-express:*,-body-parser:*,-send* node-dev index.js --no-notify"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/O-clock-Zagreus/projet-idle-game-back.git"
+    "url": "git+https://github.com/AgathePons/API_base_tools.git"
   },
+  "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/O-clock-Zagreus/projet-idle-game-back/issues"
+    "url": "https://github.com/AgathePons/API_base_tools/issues"
   },
-  "homepage": "https://github.com/O-clock-Zagreus/projet-idle-game-back#readme"
+  "homepage": "https://github.com/AgathePons/API_base_tools#readme"
 }
