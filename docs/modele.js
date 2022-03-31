@@ -23,12 +23,12 @@ let player = {
 
 // requête qui envoie tous les generators que le player a
 /*
-SELECT player.username, json_agg(generator.*) as generators
+SELECT  json_agg(generator.*) as generators
 FROM player_owns_generator
 JOIN player ON player_owns_generator.player_id=player.id
 JOIN generator ON player_owns_generator.generator_id=generator.id
 WHERE player_owns_generator.player_id=5
-GROUP BY player.username;
+GROUP BY player;
 */
 let playerGeneratorOwned = [{
   id: 2,
