@@ -3,8 +3,8 @@ const expressJSDocSwagger = require('express-jsdoc-swagger');
 const options = {
   info: {
     version: '1.0.0',
-    title: 'API REST Base',
-    description: 'Code base with usefull tools to build a classic API REST with DataMapper',
+    title: 'Bookworm API documentation',
+    description: 'Documentation of the Bookworm API, and all routes to test',
   },
   baseDir: __dirname,
   filesPattern: ['../routers/**/*.js', '../errors/*.js', '../models/*.js'],

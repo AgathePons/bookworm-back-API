@@ -1,6 +1,6 @@
 const websiteController = {
   home(_req, res) {
-    res.render('home', { title: 'Title of the API' });
+    res.render('home', { title: 'Bookworm API' });
   },
 };
 
