@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # API REST base code to start building an API REST
 
 ## What is this for?
@@ -53,3 +54,6 @@ pug homepage with link to doc
 
 ### Documentation using the OpenAPI Specification
 
+=======
+# projet-idle-game-back
+>>>>>>> 58785366a95426603bf490f7738fd9bd2eeb2cc4
