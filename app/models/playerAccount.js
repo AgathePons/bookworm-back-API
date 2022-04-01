@@ -38,6 +38,18 @@ const playerAccountDataMapper = {
     }
     return newUserAccount;
   },
+  async update(playerId, playerAccount) {
+    debug('update playerAccount where id is ', playerAccount.id);
+
+    const props = Object.keys(playerAccount);
+    const fields = props.map((prop, index) => `"${prop}" = $${index + 1}`);
+    const values = Object.values(playerAccount);
+
+    const query = `UPDATE player SET ${fields} WHERE id = $${fields.length + 1} RETURNING username, mail;`;
+    const result = await client.query(query, [...values, playerId]);
+
+    return result.rows[0];
+  },
   async findByUsername(username) {
     debug(`findByUsername called for user ${username}`);
     const result = await client.query('SELECT username FROM player WHERE username = $1', [username]);

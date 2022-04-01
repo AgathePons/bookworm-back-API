@@ -19,10 +19,10 @@ module.exports = {
     const existingMail = await playerAccountDataMapper.findByMail(req.body.mail);
 
     if (existingUsername) {
-      throw new ApiError(`${req.body.username} already exists in db for username`, { statusCode: 500 });
+      throw new ApiError(`${req.body.username} already exists in db for username`, { statusCode: 400 });
     }
     if (existingMail) {
-      throw new ApiError(`${req.body.mail} already exists in db for mail`, { statusCode: 500 });
+      throw new ApiError(`${req.body.mail} already exists in db for mail`, { statusCode: 400 });
     }
     if (req.body.password !== req.body.passwordConfirm) {
       throw new ApiError('password confirm failed', { statusCode: 418 });
@@ -39,5 +39,42 @@ module.exports = {
 
     const newPlayer = await playerAccountDataMapper.insert(newAccount);
     return res.json(newPlayer);
+  },
+
+  async update(req, res) {
+    debug('update player account');
+    const player = await playerAccountDataMapper.findOne(req.params.id);
+    if (!player) {
+      throw new ApiError(`player with id  ${req.params.id} not found`, { statusCode: 404 });
+    }
+    if (req.body.username || req.body.mail || (req.body.password && req.body.passwordConfirm)) {
+      if (req.body.password && req.body.passwordConfirm) {
+        if (req.body.password !== req.body.passwordConfirm) {
+          throw new ApiError('password confirm failed', { statusCode: 400 });
+        }
+        delete req.body.passwordConfirm;
+        const salt = await bcrypt.genSalt(5);
+        const encryptedPassword = await bcrypt.hash(req.body.password, salt);
+        req.body.password = encryptedPassword;
+      }
+      if (req.body.username) {
+        const existingUsername = await playerAccountDataMapper.findByUsername(req.body.username);
+        if (existingUsername) {
+          throw new ApiError(`${req.body.username} already exists in db for username`, { statusCode: 400 });
+        }
+      }
+      if (req.body.mail) {
+        const existingMail = await playerAccountDataMapper.findByMail(req.body.mail);
+        if (existingMail) {
+          throw new ApiError(`${req.body.mail} already exists in db for mail`, { statusCode: 400 });
+        }
+      }
+      debug('all verifs done return updated user');
+      const updatedPlayer = await playerAccountDataMapper.update(req.params.id, req.body);
+      return res.json(updatedPlayer);
+    }
+    debug('verifs fail, return user');
+    delete player.password;
+    return res.json(player);
   },
 };

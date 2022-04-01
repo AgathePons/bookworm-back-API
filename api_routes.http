@@ -46,7 +46,16 @@ content-type: application/json
 
 {
     "username": "playeskejrhzkerhr",
-    "mail": "player@player.com",
+    "mail": "player45@player.com",
     "password": "azerty",
-    "passwordConfirm": "azerty"
+    "passwordConfirm": "azerty2"
+}
+
+### Update player account
+PATCH {{ endpoint }}/playerAccount/7
+content-type: application/json
+
+{
+    "password": "test2",
+    "passwordConfirm": "test2"
 }
