@@ -28,3 +28,25 @@ GET {{ endpoint }}/playerAccount/2
 
 ### Get wrong player account infos
 GET {{ endpoint }}/playerAccount/57
+
+### Insert player account
+POST {{ endpoint }}/playerAccount/
+content-type: application/json
+
+{
+    "username": "playerrrr",
+    "mail": "player@player.com",
+    "password": "azerty",
+    "passwordConfirm": "azerty"
+}
+
+### Insert wrong player account
+POST {{ endpoint }}/playerAccount/
+content-type: application/json
+
+{
+    "username": "playeskejrhzkerhr",
+    "mail": "player@player.com",
+    "password": "azerty",
+    "passwordConfirm": "azerty"
+}

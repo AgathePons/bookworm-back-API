@@ -11,7 +11,10 @@ const ApiError = require('../errors/apiError');
 
 /**
  * @typedef {object} playerInput -  to send a req.body
- * @property {number} id - id of the player
+ * @property {string} username - username of the player
+ * @property {string} mail - mail of the player
+ * @property {string} password - password of the player
+ * @property {string} passwordConfirm - passwordConfirm of the player
  */
 
 const playerAccountDataMapper = {

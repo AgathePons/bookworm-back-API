@@ -17,4 +17,16 @@ router
    */
   .get(controllerHandler(controller.getOne));
 
+router
+  .route('/')
+  /**
+   * POST /api/playerAccount/
+   * @summary create a player account
+   * @tags Player account
+   * @param {playerInput} request.body.required - json object with input fields values from front
+   * @return {PlayerAccount} 200 - success response - application/json
+   * @return {ApiError} 404 - Not found response - application/json
+   */
+  .post(controllerHandler(controller.create));
+
 module.exports = router;
