@@ -1,7 +1,7 @@
 const express = require('express');
 
-const myObject1Router = require('./myObject1');
-const myObject2Router = require('./myObject2');
+const sentenceRouter = require('./sentence');
+
 const { apiController } = require('../../controllers/api');
 
 const { ApiError } = require('../../helpers/errorHandler');
@@ -16,8 +16,7 @@ router.use((_, res, next) => {
 
 router.all('/', apiController.home);
 
-router.use('/myObjects1', myObject1Router);
-router.use('/myObjects2', myObject2Router);
+router.use('/sentence', sentenceRouter);
 
 // 404
 router.use(() => {

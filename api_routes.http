@@ -10,6 +10,16 @@
 GET {{ endpoint }}/ofkjshsekih
 
 #########################
+#        SENTENCE       #
+#########################
+
+### Get random sentence (except 1)
+GET {{ endpoint }}/sentence
+### Get first sentence
+
+GET {{ endpoint }}/sentence/first
+
+#########################
 #        OBJECT1        #
 #########################
 

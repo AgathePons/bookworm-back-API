@@ -1,5 +1,4 @@
-const object1Controller = require('./object1Controller');
-const object2Controller = require('./object2Controller');
+const sentenceController = require('./sentenceController');
 
 const apiController = {
   home(req, res) {
@@ -10,4 +9,7 @@ const apiController = {
   },
 };
 
-module.exports = { apiController, object1Controller, object2Controller };
+module.exports = {
+  apiController,
+  sentenceController,
+};
