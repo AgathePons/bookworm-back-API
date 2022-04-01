@@ -1,16 +1,38 @@
 # API REST base code to start building an API REST
 
+## How to deploy db
+
+Create a Postgresql databse named **bookworm**.
+
+Install **[Sqitch](https://sqitch.org/)**
+
+For Debian
+
+```cmd
+apt-get install sqitch libdbd-pg-perl postgresql-client libdbd-sqlite3-perl sqlite3
+```
+
+Create a `sqitch.conf` file in the root (check `sqitch.conf.example`)
+
+In terminal (in root)
+
+```cmd
+sqitch deploy
+```
+
 ## How to run
 
 Install all the dependencies
 
-```
+```cmd
 npm install
 ```
 
-Run dev
+Create a `.env` file in the root (check `.env.example`)
 
-```
+Run dev script
+
+```cmd
 npm run dev
 ```
 
@@ -67,6 +89,3 @@ pug homepage with link to doc
 
 ### Documentation using the OpenAPI Specification
 
-### COMMENTS
-
-SELECT qui envoie les informations de la table d'association pour un user sous format json

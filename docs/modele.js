@@ -6,7 +6,6 @@ SELECT * FROM player WHERE id=1;
 */
 let player = {
   id: 145,
-  name: 'blabla',
   username: 'blabla',
   mail: 'blabla',
   idle_value: 0,
