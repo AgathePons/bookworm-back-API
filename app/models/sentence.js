@@ -4,8 +4,8 @@ const client = require('../config/db');
 /**
  * @typedef {object} Sentence - 1 sentence
  * @property {number} id - pk of the table
- * @property {string} title - title of the string
- * @property {string} text - text of the string
+ * @property {string} title - title of the sentence
+ * @property {string} text - text of the sentence
  */
 
 const sentenceDataMapper = {

@@ -23,6 +23,8 @@ GET {{ endpoint }}/sentence/first
 #     PLAYER ACCOUNT    #
 #########################
 
-### Get random sentence (except 1)
-GET {{ endpoint }}/playerAccount/1
+### Get player account infos
+GET {{ endpoint }}/playerAccount/2
 
+### Get wrong player account infos
+GET {{ endpoint }}/playerAccount/57
