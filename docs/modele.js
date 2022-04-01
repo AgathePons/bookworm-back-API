@@ -2,7 +2,11 @@
 
 // requête sur la table player
 /*
-SELECT * FROM player WHERE id=1;
+SELECT json_build_object('id', player.id, 'username', player.username, 'mail', player.mail,
+  'idle_value',player.idle_value, 'click_value', player.click_value, 'click_counter',player.click_counter,
+  'prestige_level',player.click_counter,'logout_time', player.logout_time, 'login_time', player.login_time) as player
+
+FROM player WHERE player.id=1
 */
 let player = {
   id: 145,
@@ -18,12 +22,12 @@ let player = {
 
 // requête qui envoie tous les generators que le player a
 /*
-SELECT player.username, json_agg(generator.*) as generators
+SELECT  json_agg(generator.*) as generators
 FROM player_owns_generator
 JOIN player ON player_owns_generator.player_id=player.id
 JOIN generator ON player_owns_generator.generator_id=generator.id
 WHERE player_owns_generator.player_id=5
-GROUP BY player.username;
+GROUP BY player;
 */
 let playerGeneratorOwned = [{
   id: 2,
@@ -55,7 +59,11 @@ let playerGeneratorOwned = [{
 
 // requête qui envoie tous les generators que le player n'a pas
 /*
-
+SELECT json_agg(generator.*) as generators
+FROM generator WHERE generator.id NOT IN (
+SELECT player_owns_generator.generator_id FROM player_owns_generator
+WHERE player_owns_generator.player_id=1)
+GROUP BY generator
 */
 const playerGeneratorNotOwned = [{
   id: 1,
@@ -86,6 +94,13 @@ const playerGeneratorNotOwned = [{
 ];
 
 // requête qui envoie les informations de table d'association du player
+/*
+SELECT json_agg(json_build_object('generator_id', player_owns_generator.generator_id,
+                'number_owned', player_owns_generator.number_owned,
+                'next_cost', player_owns_generator.next_cost,
+                'multiplier_bonus',player_owns_generator.multiplier_bonus)) as pog
+FROM player_owns_generator WHERE player_owns_generator.player_id=1
+*/
 
 const playerOwnsGenerator = [{
   generator_id: 2,
