@@ -1,6 +1,7 @@
 const express = require('express');
 
 const sentenceRouter = require('./sentence');
+const playerAccountRouter = require('./playerAccount');
 
 const { apiController } = require('../../controllers/api');
 
@@ -17,6 +18,7 @@ router.use((_, res, next) => {
 router.all('/', apiController.home);
 
 router.use('/sentence', sentenceRouter);
+router.use('/playerAccount', playerAccountRouter);
 
 // 404
 router.use(() => {
