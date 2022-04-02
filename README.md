@@ -2,7 +2,7 @@
 
 ## How to deploy db
 
-Create a Postgresql databse named **bookworm**.
+Create a Postgresql database named **bookworm**.
 
 Install **[Sqitch](https://sqitch.org/)**
 
@@ -12,12 +12,24 @@ For Debian
 apt-get install sqitch libdbd-pg-perl postgresql-client libdbd-sqlite3-perl sqlite3
 ```
 
-Create a `sqitch.conf` file in the root (check `sqitch.conf.example`)
+Create a `sqitch.conf` file in the root folder (copy paste `sqitch.conf.example`)
 
 In terminal (in root)
 
 ```cmd
 sqitch deploy
+```
+
+Then
+
+```cmd
+sqitch verify
+```
+
+Finally, run the seeding script (in root)
+
+```cmd
+psql -U spedata -d bookworm -f docs/seeding_bookworm.sql
 ```
 
 ## How to run
