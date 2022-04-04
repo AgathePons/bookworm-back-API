@@ -51,6 +51,8 @@ module.exports = {
     player.generatorsOwned = generatorsOwned;
     // add generators not owned
     player.generatorsNotOwned = playerNotOwnsGenerator;
+    // -------------
+
     // add player bonus to player values
     debug('------------START FINAL CALC--------------------');
     debug('player.idle_value:', player.idle_value);

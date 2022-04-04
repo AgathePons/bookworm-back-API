@@ -9,7 +9,8 @@
   "logout_time": null,
   "login_time": null,
   "currency": 0,
-  "generatorsOwned": [{
+  "generatorsOwned": [
+    {
     "id": 1,
     "type": 1,
     "name": "Bio Cheese",
