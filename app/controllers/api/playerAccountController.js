@@ -77,4 +77,14 @@ module.exports = {
     delete player.password;
     return res.json(player);
   },
+
+  async delete(req, res) {
+    const player = await playerAccountDataMapper.findOne(req.params.id);
+    if (!player) {
+      throw new ApiError('This player does not exists', { statusCode: 404 });
+    }
+
+    await playerAccountDataMapper.delete(req.params.id);
+    return res.status(204).json();
+  },
 };
