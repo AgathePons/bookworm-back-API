@@ -1,5 +1,6 @@
 const sentenceController = require('./sentenceController');
 const playerAccountController = require('./playerAccountController');
+const playerSaveController = require('./playerSaveController');
 
 const apiController = {
   home(req, res) {
@@ -14,4 +15,5 @@ module.exports = {
   apiController,
   sentenceController,
   playerAccountController,
+  playerSaveController,
 };

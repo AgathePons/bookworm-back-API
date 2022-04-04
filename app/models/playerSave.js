@@ -1,6 +1,6 @@
 const debug = require('debug')('model:player_save');
 const client = require('../config/db');
-const ApiError = require('../errors/apiError');
+// const ApiError = require('../errors/apiError');
 
 // TODO JSDOC schemas
 
