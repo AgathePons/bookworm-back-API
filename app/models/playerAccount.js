@@ -66,6 +66,12 @@ const playerAccountDataMapper = {
     }
     return result.rows[0];
   },
+  async delete(id) {
+    debug('delete playerAccount where id is ', id);
+    const result = await client.query('DELETE FROM player WHERE id = $1', [id]);
+
+    return !!result.rowCount;
+  },
 };
 
 module.exports = playerAccountDataMapper;
