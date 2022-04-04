@@ -37,6 +37,13 @@ const playerAccountDataMapper = {
       values: [id],
     };
     const generatorsOwned = (await client.query(query)).rows[0];
+    if (!generatorsOwned) {
+      debug('return empty array');
+      const generatorsOwnedZero = {
+        generators: [],
+      };
+      return generatorsOwnedZero;
+    }
     return generatorsOwned;
   },
   /**

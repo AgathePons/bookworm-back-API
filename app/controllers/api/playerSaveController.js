@@ -15,7 +15,9 @@ module.exports = {
     delete player.password;
     // generators owned array of objects
     const generatorsOwnedJson = await dataMapper.getGeneratorsOwned(req.params.id);
+    debug('generatorsOwnedJson', generatorsOwnedJson);
     const generatorsOwned = generatorsOwnedJson.generators;
+    debug('generatorsOwned', generatorsOwnedJson);
     // player owns generator array of objects
     const playerOwnsGeneratorJson = await dataMapper.getPlayerOwnsGenerator(req.params.id);
     const playerOwnsGenerator = playerOwnsGeneratorJson.playerownsgenerator;
@@ -29,6 +31,7 @@ module.exports = {
       idle_flat_bonus: 0,
       idle_percent_bonus: 1,
     };
+    debug('generatorsOwned', generatorsOwned);
     // build generatorsOwned + calc bonus
     for (let i = 0; i < generatorsOwned.length; i += 1) {
       const generatorInfo = playerOwnsGenerator.find((element) => element.generator_id === generatorsOwned[i].id);
@@ -47,11 +50,31 @@ module.exports = {
       playerBonus.idle_flat_bonus += generatorsOwned[i].total_idle_flat;
       playerBonus.idle_percent_bonus += generatorsOwned[i].total_idle_percent;
     }
-    // add generators in player object
-    player.generatorsOwned = generatorsOwned;
-    // add generators not owned
-    player.generatorsNotOwned = playerNotOwnsGenerator;
-    // -------------
+    // split owned generators into 4 arrays of generetors by type
+    const clickFlat = generatorsOwned.filter((element) => element.type === 1);
+    const clickPercent = generatorsOwned.filter((element) => element.type === 2); // TODO filter
+    const idleFlat = generatorsOwned.filter((element) => element.type === 3); // TODO filter
+    const idlePercent = generatorsOwned.filter((element) => element.type === 4); // TODO filter
+    // add generators owned arrays into player object
+    player.generatorsOwned = {
+      clickFlat,
+      clickPercent,
+      idleFlat,
+      idlePercent,
+    };
+
+    // split owned generators into 4 arrays of generetors by type
+    const clickFlatNot = playerNotOwnsGenerator.filter((element) => element.type === 1);
+    const clickPercentNot = playerNotOwnsGenerator.filter((element) => element.type === 2); // TODO filter
+    const idleFlatNot = playerNotOwnsGenerator.filter((element) => element.type === 3); // TODO filter
+    const idlePercentNot = playerNotOwnsGenerator.filter((element) => element.type === 4); // TODO filter
+    // add generators owned arrays into player object
+    player.generatorsNotOwned = {
+      clickFlatNot,
+      clickPercentNot,
+      idleFlatNot,
+      idlePercentNot,
+    };
 
     // add player bonus to player values
     debug('------------START FINAL CALC--------------------');

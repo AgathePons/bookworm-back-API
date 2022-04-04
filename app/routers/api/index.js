@@ -4,7 +4,7 @@ const sentenceRouter = require('./sentence');
 const playerAccountRouter = require('./playerAccount');
 const playerSave = require('./playerSave');
 
-const { apiController, playerSaveController } = require('../../controllers/api');
+const { apiController } = require('../../controllers/api');
 
 const { ApiError } = require('../../helpers/errorHandler');
 
