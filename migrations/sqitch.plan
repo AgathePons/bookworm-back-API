@@ -9,3 +9,4 @@ cost_factor_to_real 2022-04-02T14:31:51Z AgathePons <student@teleporter> # chang
 generator_percent_to_real 2022-04-02T14:35:42Z AgathePons <student@teleporter> # change type of percent value in generator from integer to real
 click_idle_default_value 2022-04-02T14:39:54Z AgathePons <student@teleporter> # click default value to 1 and idle default value to 0
 mail_domain 2022-04-04T12:01:51Z AgathePons <student@teleporter> # add domain regex for mail
+username_domain 2022-04-04T15:00:11Z AgathePons <student@teleporter> # add domain regex for username
