@@ -9,7 +9,7 @@ Install **[Sqitch](https://sqitch.org/)**
 For Debian
 
 ```cmd
-apt-get install sqitch libdbd-pg-perl postgresql-client libdbd-sqlite3-perl sqlite3
+sudo apt-get install sqitch libdbd-pg-perl postgresql-client libdbd-sqlite3-perl sqlite3
 ```
 
 Create a `sqitch.conf` file in the root folder (copy paste `sqitch.conf.example`)
