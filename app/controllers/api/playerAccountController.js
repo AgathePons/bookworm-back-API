@@ -1,5 +1,7 @@
 const debug = require('debug')('controller:playerAccount');
+require('dotenv').config();
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 const playerAccountDataMapper = require('../../models/playerAccount');
 const { ApiError } = require('../../helpers/errorHandler');
 
@@ -38,7 +40,22 @@ module.exports = {
     };
 
     const newPlayer = await playerAccountDataMapper.insert(newAccount);
-    return res.json(newPlayer);
+    debug('newplayer', newPlayer);
+    const expireIn = 24 * 60 * 60;
+    const payload = {
+      id: newPlayer.id,
+      username: newPlayer.username,
+    };
+    const token = jwt.sign(
+      payload,
+      process.env.ACCESS_TOKEN_SECRET,
+      {
+        expiresIn: expireIn,
+      },
+    );
+    res.header('Authorization', `Bearer ${token}`);
+    debug('token:', token);
+    return res.status(200).json({ logged: true, token });
   },
 
   async update(req, res) {
@@ -89,21 +106,28 @@ module.exports = {
   },
   async login(req, res) {
     const player = await playerAccountDataMapper.findByMail(req.body.mail);
-    debug(player);
     if (!player) {
       throw new ApiError('This usermail / password does not exists', { statusCode: 403 });
     }
-    debug(`login with mail: ${req.body.mail}, password: ${req.body.password}`);
-    debug('bcrypt');
-    // const salt = await bcrypt.genSalt(5);
     const validPassword = await bcrypt.compare(req.body.password, player.password);
-    debug('valid pswd:', validPassword);
     if (!validPassword) {
       throw new ApiError('This usermail / password does not exists', { statusCode: 403 });
     }
     delete player.password;
-    // TODO JWT process
-    const tempFakeToken = '123azerty';
-    return res.status(200).json({ player, tempFakeToken });
+    const expireIn = 24 * 60 * 60;
+    const payload = {
+      id: player.id,
+      username: player.username,
+    };
+    const token = jwt.sign(
+      payload,
+      process.env.ACCESS_TOKEN_SECRET,
+      {
+        expiresIn: expireIn,
+      },
+    );
+    res.header('Authorization', `Bearer ${token}`);
+    debug('token:', token);
+    return res.status(200).json({ logged: true, token });
   },
 };
