@@ -59,3 +59,16 @@ content-type: application/json
     "password": "test2",
     "passwordConfirm": "test2"
 }
+
+### Post player login (JWT returned)
+POST {{ endpoint }}/login
+content-type: application/json
+
+{
+    "mail": "test@mail.fr",
+    "password": "aaa"
+}
+
+### Get player save
+GET {{ endpoint }}/save/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NywidXNlcm5hbWUiOiJUZXN0IiwiaWF0IjoxNjQ5MTY0MjQ0LCJleHAiOjE2NDkyNTA2NDR9.ukWh0ymP8aOTObLvaJK1BjQqNNNZ5ulzQK1yTHXmyvY

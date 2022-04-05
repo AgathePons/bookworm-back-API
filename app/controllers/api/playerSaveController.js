@@ -10,19 +10,19 @@ module.exports = {
    */
   async buildSave(req, res) {
     // player object
-    const playerJson = await dataMapper.getOneUserJson(req.params.id);
+    const playerJson = await dataMapper.getOneUserJson(req.decoded.id);
     const { player } = playerJson;
     delete player.password;
     // generators owned array of objects
-    const generatorsOwnedJson = await dataMapper.getGeneratorsOwned(req.params.id);
+    const generatorsOwnedJson = await dataMapper.getGeneratorsOwned(req.decoded.id);
     debug('generatorsOwnedJson', generatorsOwnedJson);
     const generatorsOwned = generatorsOwnedJson.generators;
     debug('generatorsOwned', generatorsOwnedJson);
     // player owns generator array of objects
-    const playerOwnsGeneratorJson = await dataMapper.getPlayerOwnsGenerator(req.params.id);
+    const playerOwnsGeneratorJson = await dataMapper.getPlayerOwnsGenerator(req.decoded.id);
     const playerOwnsGenerator = playerOwnsGeneratorJson.playerownsgenerator;
     // player not owned generator array of object
-    const playerNotOwnsGeneratorJson = await dataMapper.getPlayerNotOwnsGenerator(req.params.id);
+    const playerNotOwnsGeneratorJson = await dataMapper.getPlayerNotOwnsGenerator(req.decoded.id);
     const playerNotOwnsGenerator = playerNotOwnsGeneratorJson.generators;
     // init player bonus
     const playerBonus = {
