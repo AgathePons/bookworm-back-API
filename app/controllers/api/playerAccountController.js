@@ -87,4 +87,23 @@ module.exports = {
     await playerAccountDataMapper.delete(req.params.id);
     return res.status(204).json();
   },
+  async login(req, res) {
+    const player = await playerAccountDataMapper.findByMail(req.body.mail);
+    debug(player);
+    if (!player) {
+      throw new ApiError('This usermail / password does not exists', { statusCode: 403 });
+    }
+    debug(`login with mail: ${req.body.mail}, password: ${req.body.password}`);
+    debug('bcrypt');
+    // const salt = await bcrypt.genSalt(5);
+    const validPassword = await bcrypt.compare(req.body.password, player.password);
+    debug('valid pswd:', validPassword);
+    if (!validPassword) {
+      throw new ApiError('This usermail / password does not exists', { statusCode: 403 });
+    }
+    delete player.password;
+    // TODO JWT process
+    const tempFakeToken = '123azerty';
+    return res.status(200).json({ player, tempFakeToken });
+  },
 };

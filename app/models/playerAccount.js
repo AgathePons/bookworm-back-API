@@ -17,6 +17,12 @@ const ApiError = require('../errors/apiError');
  * @property {string} passwordConfirm - passwordConfirm of the player
  */
 
+/**
+ * @typedef {object} playerLogin -  to send a req.body
+ * @property {string} mail - mail of the player
+ * @property {string} password - password of the player
+ */
+
 const playerAccountDataMapper = {
   async findOne(id) {
     debug(`findOne called for id ${id}`);
@@ -60,7 +66,7 @@ const playerAccountDataMapper = {
   },
   async findByMail(mail) {
     debug(`findByUsername called for mail ${mail}`);
-    const result = await client.query('SELECT mail FROM player WHERE mail = $1', [mail]);
+    const result = await client.query('SELECT * FROM player WHERE mail = $1', [mail]);
     if (result.rowCount === 0) {
       return null;
     }
@@ -68,9 +74,10 @@ const playerAccountDataMapper = {
   },
   async delete(id) {
     debug('delete playerAccount where id is ', id);
-    const result = await client.query('DELETE FROM player WHERE id = $1', [id]);
+    const result = await client.query('DELETE FROM player_owns_generator WHERE player_id = $1', [id]);
+    const result2 = await client.query(' DELETE FROM player WHERE id = $1 ', [id]);
 
-    return !!result.rowCount;
+    return !!result.rowCount && result2.rowCount;
   },
 };
 

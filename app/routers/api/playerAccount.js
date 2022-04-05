@@ -22,7 +22,7 @@ router
    * @tags Player account
    * @param {number} id.path.required - id of the player in params route
    * @param {playerInput} request.body.required - json object with input fields values from front
-   * @return {PlayerAccount} 200 - success response - application/json
+   * @return {} 200 - success response - application/json
    * @return {ApiError} 400 - Bad request response - application/json
    * @return {ApiError} 404 - player not found - application/json
    */
@@ -30,9 +30,9 @@ router
 /**
      * DELETE /api/playerAccount/{id}
      * @summary Delete one player
-     * @tags Player Account
+     * @tags Player account
      * @param {number} id.path.required - id of player in params route
-     * @return {Post} 200 - success response - application/json
+     * @return {PlayerAccount} 200 - success response - application/json
      * @return {ApiError} 400 - Bad request response - application/json
      * @return {ApiError} 404 - Post not found - application/json
      */
