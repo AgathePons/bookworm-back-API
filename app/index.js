@@ -1,6 +1,6 @@
 const path = require('path');
 const express = require('express');
-// const cors = require('cors');
+const cors = require('cors');
 
 const router = require('./routers');
 
@@ -16,11 +16,11 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // remove CORS policy ?
-/* const corsOptions = {
+const corsOptions = {
   exposedHeaders: 'Authorization',
 };
 app.use(cors(corsOptions));
- */
+
 app.use(router);
 
 module.exports = app;
