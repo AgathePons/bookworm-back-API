@@ -10,6 +10,6 @@ module.exports = {
     if (!playerSave) {
       throw ApiError('PlayerSave build error', { statusCode: 500 });
     }
-    res.json(playerSave);
+    return res.status(200).json({ logged: true, playerSave });
   },
 };
