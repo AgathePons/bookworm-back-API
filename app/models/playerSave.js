@@ -4,6 +4,12 @@ const client = require('../config/db');
 
 // TODO JSDOC schemas
 
+/**
+ * @typedef {object} updateSave -  to send a req.body
+ * @property {number} currency - currency of the player
+ * @property {number} clickCounter - click counter of the player
+ */
+
 const playerAccountDataMapper = {
   /**
    * getOneUserJson
@@ -79,6 +85,23 @@ const playerAccountDataMapper = {
     };
     const playerOwnsGenerator = (await client.query(query)).rows[0];
     return playerOwnsGenerator;
+  },
+  /**
+   * updateCurrencyClick - UPDATE currency and click counter by id
+   * @param {number} id - player id
+   * @param {number} currency - player currency
+   * @param {number} clickCounter - player click counter
+   * @returns {*}
+   */
+  async updateCurrencyClick(id, currency, clickCounter) {
+    debug(`updateCurrencyClick called for id ${id}`);
+    const query = {
+      text: 'UPDATE player SET currency=$1, click_counter=$2 WHERE id=$3;',
+      values: [currency, clickCounter, id],
+    };
+    const playerSaveUpdated = (await client.query(query)).rows[0];
+    debug('return:', playerSaveUpdated);
+    return playerSaveUpdated;
   },
 };
 

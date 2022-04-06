@@ -9,13 +9,14 @@ const router = express.Router();
 router
   .route('/')
   /**
-   * GET /api/save/
+   * PATCH /api/save/
    * @summary Get a player save JSON object
    * @tags Player save
    * @security BearerAuth
+   * @param {updateSave} request.body.required - json object with input fields values from front
    * @return {object} 200 - success response - application/json
    * @return {ApiError} 404 - Not found response - application/json
    */
-  .get(controllerHandler(checkLogin.checkLogin), controllerHandler(controller.getSave));
+  .patch(controllerHandler(checkLogin.checkLogin), controllerHandler(controller.updateSave));
 
 module.exports = router;
