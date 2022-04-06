@@ -7,10 +7,10 @@ const { ApiError } = require('../../helpers/errorHandler');
 
 module.exports = {
   async getOne(req, res) {
-    debug(`getOne called params: ${req.params.id}`);
-    const playerAccount = await playerAccountDataMapper.findOne(req.params.id);
+    debug(`getOne called params: ${req.decoded.id}`);
+    const playerAccount = await playerAccountDataMapper.findOne(req.decoded.id);
     if (!playerAccount) {
-      throw new ApiError(`player account not found for id ${req.params.id}`, { statusCode: 404 });
+      throw new ApiError(`player account not found for id ${req.decoded.id}`, { statusCode: 404 });
     }
     delete playerAccount.password;
     return res.json(playerAccount);
@@ -60,9 +60,9 @@ module.exports = {
 
   async update(req, res) {
     debug('update player account');
-    const player = await playerAccountDataMapper.findOne(req.params.id);
+    const player = await playerAccountDataMapper.findOne(req.decoded.id);
     if (!player) {
-      throw new ApiError(`player with id  ${req.params.id} not found`, { statusCode: 404 });
+      throw new ApiError(`player with id  ${req.decoded.id} not found`, { statusCode: 404 });
     }
     if (req.body.username || req.body.mail) {
       if (req.body.username) {
@@ -78,7 +78,7 @@ module.exports = {
         }
       }
       debug('all verifs done return updated user');
-      const updatedPlayer = await playerAccountDataMapper.update(req.params.id, req.body);
+      const updatedPlayer = await playerAccountDataMapper.update(req.decoded.id, req.body);
       return res.json(updatedPlayer);
     }
     debug('verifs fail, return user');
@@ -87,12 +87,12 @@ module.exports = {
   },
 
   async delete(req, res) {
-    const player = await playerAccountDataMapper.findOne(req.params.id);
+    const player = await playerAccountDataMapper.findOne(req.decoded.id);
     if (!player) {
       throw new ApiError('This player does not exists', { statusCode: 404 });
     }
 
-    await playerAccountDataMapper.delete(req.params.id);
+    await playerAccountDataMapper.delete(req.decoded.id);
     return res.status(204).json();
   },
   async login(req, res) {
