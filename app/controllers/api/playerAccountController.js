@@ -64,16 +64,7 @@ module.exports = {
     if (!player) {
       throw new ApiError(`player with id  ${req.params.id} not found`, { statusCode: 404 });
     }
-    if (req.body.username || req.body.mail || (req.body.password && req.body.passwordConfirm)) {
-      if (req.body.password && req.body.passwordConfirm) {
-        if (req.body.password !== req.body.passwordConfirm) {
-          throw new ApiError('password confirm failed', { statusCode: 400 });
-        }
-        delete req.body.passwordConfirm;
-        const salt = await bcrypt.genSalt(5);
-        const encryptedPassword = await bcrypt.hash(req.body.password, salt);
-        req.body.password = encryptedPassword;
-      }
+    if (req.body.username || req.body.mail) {
       if (req.body.username) {
         const existingUsername = await playerAccountDataMapper.findByUsername(req.body.username);
         if (existingUsername) {

@@ -18,6 +18,12 @@ const ApiError = require('../errors/apiError');
  */
 
 /**
+ * @typedef {object} playerUpdate -  to send a req.body
+ * @property {string} username - username of the player
+ * @property {string} mail - mail of the player
+ */
+
+/**
  * @typedef {object} playerLogin -  to send a req.body
  * @property {string} mail - mail of the player
  * @property {string} password - password of the player
@@ -65,7 +71,7 @@ const playerAccountDataMapper = {
     return result.rows[0];
   },
   async findByMail(mail) {
-    debug(`findByUsername called for mail ${mail}`);
+    debug(`findByMail called for mail ${mail}`);
     const result = await client.query('SELECT * FROM player WHERE mail = $1', [mail]);
     if (result.rowCount === 0) {
       return null;

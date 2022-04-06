@@ -1,5 +1,8 @@
 const express = require('express');
 
+const validate = require('../../validation/validator');
+const registerSchema = require('../../validation/schemas/registerSchema');
+const updateSchema = require('../../validation/schemas/updateSchema');
 const { playerAccountController: controller } = require('../../controllers/api');
 const controllerHandler = require('../../helpers/controllerHandler');
 
@@ -21,12 +24,12 @@ router
    * @summary Update a player account info
    * @tags Player account
    * @param {number} id.path.required - id of the player in params route
-   * @param {playerInput} request.body.required - json object with input fields values from front
+   * @param {playerUpdate} request.body.required - json object with input fields values from front
    * @return {} 200 - success response - application/json
    * @return {ApiError} 400 - Bad request response - application/json
    * @return {ApiError} 404 - player not found - application/json
    */
-  .patch(controllerHandler(controller.update))
+  .patch(validate('body', updateSchema), controllerHandler(controller.update))
 /**
      * DELETE /api/playerAccount/{id}
      * @summary Delete one player
@@ -48,6 +51,6 @@ router
    * @return {PlayerAccount} 200 - success response - application/json
    * @return {ApiError} 404 - Not found response - application/json
    */
-  .post(controllerHandler(controller.create));
+  .post(validate('body', registerSchema), controllerHandler(controller.create));
 
 module.exports = router;
