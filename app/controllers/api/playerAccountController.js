@@ -62,6 +62,9 @@ module.exports = {
     // build save
     debug('new player', newPlayer);
     const playerSave = await save.buildSave(newPlayer.id);
+    if (!playerSave) {
+      throw ApiError('PlayerSave build error', { statusCode: 500 });
+    }
     return res.status(200).json({ logged: true, token, playerSave });
   },
 
@@ -131,6 +134,9 @@ module.exports = {
     res.header('Authorization', `Bearer ${token}`);
     debug('token:', token);
     const playerSave = await save.buildSave(player.id);
+    if (!playerSave) {
+      throw ApiError('PlayerSave build error', { statusCode: 500 });
+    }
     return res.status(200).json({ logged: true, token, playerSave });
   },
 };
