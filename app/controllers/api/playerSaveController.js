@@ -5,11 +5,9 @@ const save = require('../../services/buildSave');
 
 module.exports = {
   async getSave(req, res) {
-    debug(`getSave for player: ${req.params.id}`);
+    debug(`getSave for player: ${req.decoded.id} ${req.decoded.username}`);
     const playerId = req.decoded.id;
-    debug('playerID', playerId);
-    const playerSave = save.buildSave(playerId);
-    debug('playerSave', playerSave);
+    const playerSave = await save.buildSave(playerId);
     res.json(playerSave);
   },
 };

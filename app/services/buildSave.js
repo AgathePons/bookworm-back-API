@@ -9,15 +9,16 @@ const save = {
    * provides all the player saved game datas
    */
   async buildSave(playerId) {
+    debug(`buildSave called for player id ${playerId}`);
     // player object
     const playerJson = await dataMapper.getOneUserJson(playerId);
     const { player } = playerJson;
     delete player.password;
     // generators owned array of objects
     const generatorsOwnedJson = await dataMapper.getGeneratorsOwned(playerId);
-    debug('generatorsOwnedJson', generatorsOwnedJson);
+    //! debug('generatorsOwnedJson', generatorsOwnedJson);
     const generatorsOwned = generatorsOwnedJson.generators;
-    debug('generatorsOwned', generatorsOwnedJson);
+    //! debug('generatorsOwned', generatorsOwnedJson);
     // player owns generator array of objects
     const playerOwnsGeneratorJson = await dataMapper.getPlayerOwnsGenerator(playerId);
     const playerOwnsGenerator = playerOwnsGeneratorJson.playerownsgenerator;
@@ -31,7 +32,7 @@ const save = {
       idle_flat_bonus: 0,
       idle_percent_bonus: 1,
     };
-    debug('generatorsOwned', generatorsOwned);
+    //! debug('generatorsOwned', generatorsOwned);
     // build generatorsOwned + calc bonus
     for (let i = 0; i < generatorsOwned.length; i += 1) {
       const generatorInfo = playerOwnsGenerator.find((element) => element.generator_id === generatorsOwned[i].id);
@@ -80,14 +81,14 @@ const save = {
 
     // add player bonus to player values
     debug('------------START FINAL CALC--------------------');
-    debug('player.idle_value:', player.idle_value);
-    debug('player.click_value:', player.click_value);
+    //! debug('player.idle_value:', player.idle_value);
+    //! debug('player.click_value:', player.click_value);
     player.idle_value += Math.floor(playerBonus.idle_flat_bonus * playerBonus.idle_percent_bonus);
     player.click_value += Math.floor(playerBonus.clic_flat_bonus * playerBonus.clic_percent_bonus);
     debug('bonus:', playerBonus);
     debug('player idle value', player.idle_value);
     debug('player click value', player.click_value);
-    debug('player object', player);
+    //! debug('player object', player);
     return player;
   },
 };

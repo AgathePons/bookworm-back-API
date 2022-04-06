@@ -1,4 +1,4 @@
-const debug = require('debug')('middleware:login');
+const debug = require('debug')('middleware:checkLogin');
 const jwt = require('jsonwebtoken');
 const { ApiError } = require('../helpers/errorHandler');
 
