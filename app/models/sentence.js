@@ -11,7 +11,7 @@ const client = require('../config/db');
 const sentenceDataMapper = {
   async findAll() {
     debug('findAll called');
-    const result = await client.query('SELECT * FROM sentences');
+    const result = await client.query('SELECT * FROM sentences WHERE sentences.id NOT IN (1)');
     return result.rows;
   },
   async findOne(id) {

@@ -11,7 +11,7 @@ module.exports = {
   async getRandom(_req, res) {
     debug('getRandom called');
     const sentences = await sentenceDataMapper.findAll();
-    const randomSentence = sentences[Math.floor(Math.random() * (sentences.length - 1 + 1)) + 1];
+    const randomSentence = sentences[Math.floor(Math.random() * sentences.length)];
     return res.json(randomSentence);
   },
   async getFirst(_req, res) {
