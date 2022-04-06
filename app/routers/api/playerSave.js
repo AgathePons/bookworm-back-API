@@ -16,6 +16,6 @@ router
    * @return {object} 200 - success response - application/json
    * @return {ApiError} 404 - Not found response - application/json
    */
-  .get(controllerHandler(checkLogin.checkLogin), controllerHandler(controller.buildSave));
+  .get(controllerHandler(checkLogin.checkLogin), controllerHandler(controller.getSave));
 
 module.exports = router;
