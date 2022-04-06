@@ -1,8 +1,6 @@
 const expressJSDocSwagger = require('express-jsdoc-swagger');
 
 const options = {
-  // test JWT
-
   info: {
     version: '1.0.0',
     title: 'Bookworm API documentation',
@@ -10,10 +8,10 @@ const options = {
   },
 
   security: {
-    BasicAuth: {
+    /* BasicAuth: {
       type: 'http',
       scheme: 'basic',
-    },
+    }, */
     BearerAuth: {
       type: 'http',
       scheme: 'bearer',
