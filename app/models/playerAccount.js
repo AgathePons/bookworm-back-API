@@ -85,6 +85,18 @@ const playerAccountDataMapper = {
 
     return !!result.rowCount && result2.rowCount;
   },
+  async updateLogoutTime(id) {
+    debug('updateLogoutTime ', id);
+    const result = await client.query('UPDATE player SET logout_time = CURRENT_TIMESTAMP WHERE  player.id = $1', [id]);
+
+    return !!result.rowCount;
+  },
+  async updateLoginTime(id) {
+    debug('updateLoginTime ', id);
+    const result = await client.query('UPDATE player SET login_time = CURRENT_TIMESTAMP WHERE  player.id = $1', [id]);
+
+    return !!result.rowCount;
+  },
 };
 
 module.exports = playerAccountDataMapper;
