@@ -116,7 +116,7 @@ const playerAccountDataMapper = {
     await client.query(query);
   },
   /**
-   * Get the starting_cost of a generator by id
+   * return the starting_cost of a generator by id
    * @param {number} generatorId - id of the generator
    */
   async getGeneratorStartingCost(generatorId) {
