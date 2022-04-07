@@ -58,7 +58,7 @@ module.exports = {
     }
     return res.status(200).json({ logged: true, playerSave });
   },
-  async disconectAndSave(req, res) {
+  async disconnectAndSave(req, res) {
     debug(`updateSave for player: ${req.decoded.id} ${req.decoded.username}`);
     const playerId = req.decoded.id;
     const { currency, clickCounter } = req.body;

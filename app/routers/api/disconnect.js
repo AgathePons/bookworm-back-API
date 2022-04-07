@@ -9,12 +9,12 @@ const router = express.Router();
 router
   .route('/')
   /**
-   * PATCH /api/disconect/
-   * @summary disconected player
+   * PATCH /api/disconnect/
+   * @summary disconnected player
    * @tags Player account
    * @security BearerAuth
    * @param {updateSave} request.body.required - json object with input fields values from front
    */
-  .patch(controllerHandler(checkLogin.checkLogin), controllerHandler(controller.disconectAndSave));
+  .patch(controllerHandler(checkLogin.checkLogin), controllerHandler(controller.disconnectAndSave));
 
 module.exports = router;

@@ -4,7 +4,7 @@ const sentenceRouter = require('./sentence');
 const playerAccountRouter = require('./playerAccount');
 const playerSave = require('./playerSave');
 const login = require('./login');
-const disconect = require('./disconect');
+const disconnect = require('./disconnect');
 
 const { apiController } = require('../../controllers/api');
 
@@ -24,7 +24,7 @@ router.use('/sentence', sentenceRouter);
 router.use('/playerAccount', playerAccountRouter);
 router.use('/save', playerSave);
 router.use('/login', login);
-router.use('/disconect', disconect);
+router.use('/disconnect', disconnect);
 
 // 404
 router.use(() => {
