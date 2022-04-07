@@ -91,7 +91,6 @@ const playerAccountDataMapper = {
    * @param {number} id - player id
    * @param {number} currency - player currency
    * @param {number} clickCounter - player click counter
-   * @returns {*}
    */
   async updateCurrencyClick(id, currency, clickCounter) {
     debug(`updateCurrencyClick called for id ${id}`);
@@ -102,6 +101,40 @@ const playerAccountDataMapper = {
     const playerSaveUpdated = (await client.query(query)).rows[0];
     debug('return:', playerSaveUpdated);
     return playerSaveUpdated;
+  },
+  /**
+   * postGenerator - POST in player_owns_generator new generator for a player
+   * @param {number} playerId - id of the player
+   * @param {number} generatorId id of the generator
+   */
+  async postGenerator(playerId, generatorId) {
+    debug(`postGenerator called for player ${playerId}, and generator ${generatorId}`);
+    const query = {
+      text: 'INSERT INTO player_owns_generator (player_id, generator_id) VALUES ($1, $2);',
+      values: [playerId, generatorId],
+    };
+    await client.query(query);
+  },
+  /**
+   * Get the starting_cost of a generator by id
+   * @param {number} generatorId - id of the generator
+   */
+  async getGeneratorStartingCost(generatorId) {
+    const query = {
+      text: 'SELECT starting_cost FROM generator WHERE id=$1',
+      values: [generatorId],
+    };
+    const generatorCost = (await client.query(query)).rows[0];
+    debug('starting cost:', generatorCost);
+    return generatorCost;
+  },
+  async getPlayerOwnsGeneratorByIds(playerId, generatorId) {
+    const query = {
+      text: 'SELECT * FROM player_owns_generator WHERE player_id=$1 AND generator_id=$2',
+      values: [playerId, generatorId],
+    };
+    const playerOwnsGenerator = (await client.query(query)).rows[0];
+    return playerOwnsGenerator;
   },
 };
 
