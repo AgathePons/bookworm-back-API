@@ -1,32 +1,33 @@
+/* eslint-disable max-len */
 const debug = require('debug')('model:player_account');
 const client = require('../config/db');
 const ApiError = require('../errors/apiError');
 
 /**
  * @typedef {object} PlayerAccount - player account
- * @property {string} username - username of the player
+ * @property {string} username - Your nickname must be between 3 and 15 letters or numbers.
  * @property {string} mail - mail of the player
- * @property {string} password - password of the player
+ * @property {string} password - Your password must contain a capital letter, a number and a character other than " for a total of ten characters.
  */
 
 /**
  * @typedef {object} playerInput -  to send a req.body
- * @property {string} username - username of the player
+ * @property {string} username - Your nickname must be between 3 and 15 letters or numbers.
  * @property {string} mail - mail of the player
- * @property {string} password - password of the player
- * @property {string} passwordConfirm - passwordConfirm of the player
+ * @property {string} password - Your password must contain a capital letter, a number and a character other than " for a total of ten characters.
+ * @property {string} passwordConfirm - The confirmPassword must be the same as the password.
  */
 
 /**
  * @typedef {object} playerUpdate -  to send a req.body
- * @property {string} username - username of the player
+ * @property {string} username - Your nickname must be between 3 and 15 letters or numbers.
  * @property {string} mail - mail of the player
  */
 
 /**
  * @typedef {object} playerLogin -  to send a req.body
  * @property {string} mail - mail of the player
- * @property {string} password - password of the player
+ * @property {string} password - Your password must contain a capital letter, a number and a character other than " for a total of ten characters.
  */
 
 const playerAccountDataMapper = {
