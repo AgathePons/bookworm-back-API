@@ -133,7 +133,7 @@ module.exports = {
     // set headers Authorization with jwt
     res.header('Authorization', `Bearer ${token}`);
     debug('token:', token);
-    await playerAccountDataMapper.updateLogoutTime(player.id);
+    await playerAccountDataMapper.updateLoginTime(player.id);
     const playerSave = await save.buildSave(player.id);
     if (!playerSave) {
       throw ApiError('PlayerSave build error', { statusCode: 500 });
