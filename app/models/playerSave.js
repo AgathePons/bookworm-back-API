@@ -115,6 +115,14 @@ const playerAccountDataMapper = {
     };
     await client.query(query);
   },
+  async patchGenerator(playerId, generatorId, newNumberOwned) {
+    debug(`patchGenerator called for player ${playerId}, and generator ${generatorId}`);
+    const query = {
+      text: 'UPDATE player_owns_generator SET number_owned=$1 WHERE player_id=$2 AND generator_id=$3;',
+      values: [newNumberOwned, playerId, generatorId],
+    };
+    await client.query(query);
+  },
   /**
    * return the starting_cost of a generator by id
    * @param {number} generatorId - id of the generator
@@ -127,6 +135,15 @@ const playerAccountDataMapper = {
     const generatorCost = (await client.query(query)).rows[0];
     debug('starting cost:', generatorCost);
     return generatorCost;
+  },
+  async getGeneratorCostFactor(generatorId) {
+    const query = {
+      text: 'SELECT cost_factor FROM generator WHERE id=$1',
+      values: [generatorId],
+    };
+    const generatorCostFactor = (await client.query(query)).rows[0];
+    debug('cost factor:', generatorCostFactor);
+    return generatorCostFactor;
   },
   async getPlayerOwnsGeneratorByIds(playerId, generatorId) {
     const query = {
