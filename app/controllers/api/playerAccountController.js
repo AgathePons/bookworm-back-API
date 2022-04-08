@@ -133,19 +133,23 @@ module.exports = {
     // set headers Authorization with jwt
     res.header('Authorization', `Bearer ${token}`);
     debug('token:', token);
+    // login timestamptz
     await playerAccountDataMapper.updateLoginTime(player.id);
-
+    // calc earned currency
     const afkSc = (await playerAccountDataMapper.countAfkSc(player.id)).timepersecond;
-    const newCurrency = afkSc * player.idle_value + player.currency;
-    await playerAccountDataMapper.addNewCurrency(newCurrency, player.id);
     const playerSave = await save.buildSave(player.id);
     if (!playerSave) {
       throw ApiError('PlayerSave build error', { statusCode: 500 });
     }
+    debug('idle value', playerSave.idle_value);
+    const currencyAfk = afkSc * playerSave.idle_value;
+    const newCurrency = player.currency + currencyAfk;
+    debug(`currency: ${player.currency}, afk sec: ${afkSc}, currency won: ${currencyAfk}, total currency: ${newCurrency}`);
+    playerSave.currency = newCurrency;
     return res.status(200).json({
       logged: true,
       token,
-      newCurrency,
+      logoutCurrency: currencyAfk,
       playerSave,
     });
   },
