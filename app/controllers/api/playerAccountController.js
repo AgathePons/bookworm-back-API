@@ -134,10 +134,19 @@ module.exports = {
     res.header('Authorization', `Bearer ${token}`);
     debug('token:', token);
     await playerAccountDataMapper.updateLoginTime(player.id);
+
+    const afkSc = (await playerAccountDataMapper.countAfkSc(player.id)).timepersecond;
+    const newCurrency = afkSc * player.idle_value + player.currency;
+    await playerAccountDataMapper.addNewCurrency(newCurrency, player.id);
     const playerSave = await save.buildSave(player.id);
     if (!playerSave) {
       throw ApiError('PlayerSave build error', { statusCode: 500 });
     }
-    return res.status(200).json({ logged: true, token, playerSave });
+    return res.status(200).json({
+      logged: true,
+      token,
+      newCurrency,
+      playerSave,
+    });
   },
 };

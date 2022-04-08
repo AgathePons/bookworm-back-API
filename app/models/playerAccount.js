@@ -98,6 +98,19 @@ const playerAccountDataMapper = {
 
     return !!result.rowCount;
   },
+
+  async countAfkSc(id) {
+    debug(`countAfkCurrency called for id ${id}`);
+    const result = await client.query(`SELECT round(extract ('epoch' from login_time - logout_time))  as  timepersecond
+    FROM player
+    WHERE player.id = $1;`, [id]);
+    return result.rows[0];
+  },
+  async addNewCurrency(newCurrency, id) {
+    debug(`add ${newCurrency} to currency where id = ${id}`);
+    const result = await client.query('UPDATE player SET currency = $1 WHERE player.id = $2', [newCurrency, id]);
+    return result.rows[0];
+  },
 };
 
 module.exports = playerAccountDataMapper;
