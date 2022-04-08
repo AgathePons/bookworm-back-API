@@ -32,6 +32,19 @@ router
    * @return {object} 200 - success response - application/json
    * @return {ApiError} 404 - Not found response - application/json
    */
-  .post(controllerHandler(checkLogin.checkLogin), controllerHandler(controller.buyNewGenerator));
+  .post(controllerHandler(checkLogin.checkLogin), controllerHandler(controller.buyNewGenerator))
+  /**
+   * PATCH /api/save/item/{id}
+   * @summary A player buy a generator he already has bought at least one:
+   * save the game (currency + clickCounter),
+   * add new generator in db, rebuild the save JSON with new data
+   * @tags Player save
+   * @security BearerAuth
+   * @param {number} id.path.required - id of the generator bought
+   * @param {updateSave} request.body.required - json object with input fields values from front
+   * @return {object} 200 - success response - application/json
+   * @return {ApiError} 404 - Not found response - application/json
+   */
+  .patch(controllerHandler(checkLogin.checkLogin), controllerHandler(controller.buyGenerator));
 
 module.exports = router;
