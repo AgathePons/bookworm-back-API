@@ -69,18 +69,33 @@ const save = {
     };
 
     // split owned generators into 4 arrays of generetors by type
-    const clickFlatNot = playerNotOwnsGenerator.filter((element) => element.type === 1);
-    const clickPercentNot = playerNotOwnsGenerator.filter((element) => element.type === 2);
-    const idleFlatNot = playerNotOwnsGenerator.filter((element) => element.type === 3);
-    const idlePercentNot = playerNotOwnsGenerator.filter((element) => element.type === 4);
-    // add generators owned arrays into player object
-    player.generatorsNotOwned = {
-      clickFlatNot,
-      clickPercentNot,
-      idleFlatNot,
-      idlePercentNot,
-    };
-
+    //! debug('playerNotOwnsGenerator', playerNotOwnsGenerator);
+    // TODO refacto for better code ?
+    if (playerNotOwnsGenerator !== null) {
+      const clickFlatNot = playerNotOwnsGenerator.filter((element) => element.type === 1);
+      const clickPercentNot = playerNotOwnsGenerator.filter((element) => element.type === 2);
+      const idleFlatNot = playerNotOwnsGenerator.filter((element) => element.type === 3);
+      const idlePercentNot = playerNotOwnsGenerator.filter((element) => element.type === 4);
+      // add generators owned arrays into player object
+      player.generatorsNotOwned = {
+        clickFlatNot,
+        clickPercentNot,
+        idleFlatNot,
+        idlePercentNot,
+      };
+    } else {
+      const clickFlatNot = [];
+      const clickPercentNot = [];
+      const idleFlatNot = [];
+      const idlePercentNot = [];
+      // add generators owned arrays into player object
+      player.generatorsNotOwned = {
+        clickFlatNot,
+        clickPercentNot,
+        idleFlatNot,
+        idlePercentNot,
+      };
+    }
     // add player bonus to player values
     debug('------------START FINAL CALC--------------------');
     //! debug('player.idle_value:', player.idle_value);
