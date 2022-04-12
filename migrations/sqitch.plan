@@ -11,3 +11,4 @@ click_idle_default_value 2022-04-02T14:39:54Z AgathePons <student@teleporter> # 
 mail_domain 2022-04-04T12:01:51Z AgathePons <student@teleporter> # add domain regex for mail
 username_domain 2022-04-04T15:00:11Z AgathePons <student@teleporter> # add domain regex for username
 alter-type 2022-04-12T12:19:49Z Yoan <feurtet.yoan@gmail.com> # changer int en bigint quand c'est nécessaire
+column_icon 2022-04-12T12:25:07Z Yoan <feurtet.yoan@gmail.com> # ajout d'une colonne icon

@@ -8,6 +8,6 @@ ALTER TABLE generator
 ALTER COLUMN idle_flat_value TYPE INT;
 
 ALTER TABLE generator
-ALTER COLUMN click_flat_value TYPE INT;
+ALTER COLUMN clic_flat_value TYPE INT;
 
 COMMIT;
