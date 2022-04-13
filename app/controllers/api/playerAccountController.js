@@ -116,6 +116,9 @@ module.exports = {
     if (!validPassword) {
       throw new ApiError('This usermail / password does not exists', { statusCode: 403 });
     }
+    // player currency from db from string to number
+    player.currency = Number(player.currency);
+    // remove password
     delete player.password;
     // create jwt
     const expireIn = 24 * 60 * 60;
@@ -143,8 +146,8 @@ module.exports = {
     }
     debug('idle value', playerSave.idle_value);
     const currencyAfk = afkSc * playerSave.idle_value;
-    const newCurrency = player.currency + currencyAfk;
-    debug(`currency: ${player.currency}, afk sec: ${afkSc}, currency won: ${currencyAfk}, total currency: ${newCurrency}`);
+    const newCurrency = playerSave.currency + currencyAfk;
+    debug(`currency: ${playerSave.currency} (${typeof playerSave.currency}), afk sec: ${afkSc}, currency won: ${currencyAfk} (${typeof currencyAfk}), total currency: ${newCurrency} (${typeof newCurrency})`);
     playerSave.currency = newCurrency;
     return res.status(200).json({
       logged: true,
