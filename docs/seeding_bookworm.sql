@@ -11,7 +11,7 @@ RESTART IDENTITY;
 INSERT INTO
   "generator" ("type", "name", "text", "clic_flat_value", "clic_percent_value", "idle_flat_value", "idle_percent_value", "starting_cost","cost_factor", "order", "icon")
 VALUES
-  (1, 'Bio Cheese', 'Eat the Bio Cheese and add 5 more KPC ', 5, 0, 0, 0, 75, 1.1, 1, 'bio-cheese' ),
+  (1, 'Bio Cheese', 'Eat the Bio Cheese and add 5 more KPC ', 5, 0, 0, 0, 10, 1.1, 1, 'bio-cheese' ),
   (1, 'Silk Touch', 'With your pretty little soft hand your turn the page with manner, and five you 10 more KPC', 75, 0, 0, 0, 150, 1.1, 2, 'silk-touch' ),
   (1, 'High-tech Mouse', 'High ergonomic mouse perfect for long hours of clicking.', 250, 0, 0, 0, 500, 2.3, 3, 'high-tech-mouse' ),
   (1, 'I-cucumber', 'The latest smartphone for better performance', 1000, 0, 0, 0, 2500, 3, 4, 'i-cucumber' ),
@@ -31,8 +31,8 @@ VALUES
   (2, 'Finger Training', 'Every practice will make you better with your fingers', 0, 3, 0, 0, 500000, 7.9, 8, 'finger-training' ),
   (2, 'Finger Implant', 'With this implant, you will be 5% more powerful and since you are already very good, you will be really good!', 0, 5, 0, 0, 1000000, 8, 9, 'finger-implant' ),
   (2, 'Neural Implant', 'Boosting your fingers is good, but boosting your brain is even better. Be fast, be precise!', 0, 10, 0, 0, 100000000, 8.5, 10, 'neural-implant'),
-  (3, 'Intravenous Coffee', 'To maintain a good coffee rate in blood', 0, 0, 100, 0, 4000, 2.2, 1, 'intravenous-coffee' ),
-  (3, 'Ergonomic Chair', 'To be comfortable, with technologic lumbar cylinder', 0, 0, 500, 0, 10000, 2.2, 2, 'ergonomic-chair' ),
+  (3, 'Intravenous Coffee', 'To maintain a good coffee rate in blood', 0, 0, 5, 0, 40, 2.2, 1, 'intravenous-coffee' ),
+  (3, 'Ergonomic Chair', 'To be comfortable, with technologic lumbar cylinder', 0, 0, 10, 0, 10000, 2.2, 2, 'ergonomic-chair' ),
   (3, 'Audible', 'Listen, “Le temps des tempêtes” by Grumpy to win 1k more IFV', 0, 0, 1000, 0, 10000, 2, 3, 'audible' ),
   (3, '4k Lens', 'The bookworm puts on its best lenses to read faster !', 0, 0, 5000, 0, 250000, 1.1, 4, '4k-lens' ),
   (3, 'Bluetooth Magnifier', 'A beautiful technological magnifying glass that helps the bookworm to read the small print !',0, 0, 8000, 0, 500000, 1.8, 5, 'bluetooth-magnifier' ),
