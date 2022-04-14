@@ -34,12 +34,12 @@ const playerAccountDataMapper = {
   async getGeneratorsOwned(id) {
     debug(`getGeneratorsOwned called for id ${id}`);
     const query = {
-      text: `SELECT  json_agg(generator.*) as generators
-        FROM player_owns_generator
-        JOIN player ON player_owns_generator.player_id=player.id
-        JOIN generator ON player_owns_generator.generator_id=generator.id
-        WHERE player_owns_generator.player_id=$1
-        GROUP BY player;`,
+      text: `SELECT  json_agg(generator.* ORDER BY generator."order") as generators
+      FROM player_owns_generator
+      JOIN player ON player_owns_generator.player_id=player.id
+      JOIN generator ON player_owns_generator.generator_id=generator.id
+      WHERE player_owns_generator.player_id=$1
+      GROUP BY player;`,
       values: [id],
     };
     const generatorsOwned = (await client.query(query)).rows[0];
@@ -61,10 +61,10 @@ const playerAccountDataMapper = {
   async getPlayerNotOwnsGenerator(id) {
     debug(`getPlayerNotOwnsGenerator called for id ${id}`);
     const query = {
-      text: `SELECT json_agg(generator.*) as generators
-        FROM generator WHERE generator.id NOT IN (
+      text: `SELECT json_agg(generator.* ORDER BY generator."order" ) as generators
+      FROM generator WHERE generator.id NOT IN (
         SELECT player_owns_generator.generator_id FROM player_owns_generator
-        WHERE player_owns_generator.player_id=$1);`,
+           WHERE player_owns_generator.player_id=$1);`,
       values: [id],
     };
     const playerNotOwnsGenerator = (await client.query(query)).rows[0];
