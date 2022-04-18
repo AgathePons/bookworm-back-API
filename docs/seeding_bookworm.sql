@@ -14,7 +14,7 @@ VALUES
   (1, 'Bio Cheese', 'Eat the Bio Cheese and add 5 more KPC ', 2, 0, 0, 0, 20, 1.2, 1, 'biocheese' ),
   (1, 'Silk Touch', 'With your pretty little soft hand your turn the page with manner, and five you 10 more KPC', 5, 0, 0, 0, 100, 1.2, 2, 'silktouch' ),
   (1, 'High-tech Mouse', 'High ergonomic mouse perfect for long hours of clicking.', 7, 0, 0, 0, 250, 1.2, 3, 'hightechmouse' ),
-  (1, 'I-cucumber', 'The latest smartphone for better performance', 11, 0, 0, 0, 2500, 1.3, 4, 'i-cucumber' ),
+  (1, 'I-cucumber', 'The latest smartphone for better performance', 11, 0, 0, 0, 2500, 1.3, 4, 'icucumber' ),
   (1, 'Smart Screen', 'Screen with finger detection for a better touch speed',15, 0, 0, 0, 10000, 1.3, 5, 'smartscreen' ),
   (1, 'Driver''s Stylus', 'A revolutionary stylus that sends touch information to the millisecond!', 25, 0, 0, 0, 50000, 1.3, 6, 'driverstylus' ),
   (1, 'Touch Glove', 'The best of the touch, in the best of the textiles.', 21, 0, 0, 0, 250000, 5.5, 7, 'touchglove' ),
@@ -31,7 +31,7 @@ VALUES
   (2, 'Blue Pill', 'Now you have a choice. BE STRONG!', 0, 1.75, 0, 0, 200000, 1.5, 7, 'bluepill' ),
   (2, 'Finger Training', 'Every practice will make you better with your fingers', 0, 2, 0, 0, 500000, 1.6, 8, 'fingertraining' ),
   (2, 'Finger Implant', 'With this implant, you will be 5% more powerful and since you are already very good, you will be really good!', 0, 5, 0, 0, 1000000, 1.6, 9, 'fingerimplant' ),
-  (2, 'Neural Implant', 'Boosting your fingers is good, but boosting your brain is even better. Be fast, be precise!', 0, 10, 0, 0, 100000000, 1.6, 10, 'neural implant'),
+  (2, 'Neural Implant', 'Boosting your fingers is good, but boosting your brain is even better. Be fast, be precise!', 0, 10, 0, 0, 100000000, 1.6, 10, 'neuralimplant'),
 
   (3, 'Bookworm', 'Let''s go little bookworm!', 0, 0, 2, 0, 200, 1.2, 1, 'bookworm' ),
   (3, 'Ergonomic Chair', 'To be comfortable, with technologic lumbar cylinder', 0, 0, 5, 0, 1000, 1.2, 2, 'ergonomicchair' ),
