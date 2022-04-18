@@ -22,15 +22,15 @@ module.exports = {
     const existingMail = await playerAccountDataMapper.findByMail(req.body.mail);
     // check if username already exists
     if (existingUsername) {
-      throw new ApiError(`${req.body.username} already exists in db for username`, { statusCode: 400 });
+      throw new ApiError('Username not available', { statusCode: 400 });
     }
     // check if mail already exists
     if (existingMail) {
-      throw new ApiError(`${req.body.mail} already exists in db for mail`, { statusCode: 400 });
+      throw new ApiError('Mail not available', { statusCode: 400 });
     }
     // check if password matches with passwordConfirm
     if (req.body.password !== req.body.passwordConfirm) {
-      throw new ApiError('password confirm failed', { statusCode: 418 });
+      throw new ApiError('Password confirm failed', { statusCode: 418 });
     }
     // encrypt password
     const salt = await bcrypt.genSalt(5);
@@ -109,12 +109,12 @@ module.exports = {
     const player = await playerAccountDataMapper.findByMail(req.body.mail);
     // check if email exists
     if (!player) {
-      throw new ApiError('This usermail / password does not exists', { statusCode: 403 });
+      throw new ApiError('Invalid mail and/or password', { statusCode: 403 });
     }
     // check if password is valid
     const validPassword = await bcrypt.compare(req.body.password, player.password);
     if (!validPassword) {
-      throw new ApiError('This usermail / password does not exists', { statusCode: 403 });
+      throw new ApiError('Invalid mail and/or password', { statusCode: 403 });
     }
     // player currency from db from string to number
     player.currency = Number(player.currency);
