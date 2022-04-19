@@ -62,6 +62,7 @@ VALUES
   ('Go read a book', 'Still here? Why don''t you get some good reading while I''m working here?'),
   ('Stop Watching Me', 'Do you know that I can''t be fully concentrated if you''re just here, watching me...'),
   ('Harry Potter', 'Have you ever heard about Harry Potter? It''s a little story about wizards, doing some magic...'),
-  ('Bookbuster', 'Looking for a good book? www.bookbuster.com. Enjoy your reading!');
+  ('Bookbuster', 'Looking for a good book? www.bookbuster.com. Enjoy your reading!'),
+  ('Konami Code', 'I found this strange note: "↑↑↓↓←→←→ba"...Hmmm what the hell does that mean?');
 
 COMMIT;
