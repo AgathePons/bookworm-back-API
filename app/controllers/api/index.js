@@ -3,6 +3,7 @@ const playerAccountController = require('./playerAccountController');
 const playerSaveController = require('./playerSaveController');
 
 const apiController = {
+
   home(req, res) {
     const fullURL = `${req.protocol}://${req.get('host')}`;
     return res.json({

@@ -63,6 +63,18 @@ VALUES
   ('Stop Watching Me', 'Do you know that I can''t be fully concentrated if you''re just here, watching me...'),
   ('Harry Potter', 'Have you ever heard about Harry Potter? It''s a little story about wizards, doing some magic...'),
   ('Bookbuster', 'Looking for a good book? www.bookbuster.com. Enjoy your reading!'),
-  ('Konami Code', 'I found this strange note: "↑↑↓↓←→←→ba"...Hmmm what the hell does that mean?');
+  ('Konami Code', 'I found this strange note: "↑↑↓↓←→←→ba"...Hmmm what the hell does that mean?'),
+  ('Leave me alone','You again? Get out of here, I can take care of myself! Don''t you have a book to finish?'),
+  ('Buy some upgrade', 'Buy some bookworm upgrades if you want me to go faster and quit the game!'),
+  ('Moby Dick', 'Man vs whale, whale wins. You get it ? Go read it.'),
+  ('Anna Karénine', 'This is the story of a young woman who takes a lover and then a train. You get it ? Go read it.'),
+  ('Manon des sources', 'This is the story of a shepherdess who wants to find the one who is the source of her troubles. You get it ? Go read it.'),
+  ('The Birds', 'This is the story of a city where birds fly in the feathers of the inhabitants. You get it ? Go read it.'),
+  ('The Bible', 'This is the story of a Sims game gone wrong. You get it ? Go read it, or not !'),
+  ('The Count of Monte Cristo', 'This is the story of a wrongly convicted man whose sudden wealth will make the bad fortune of his enemies. You get it ? Go read it !'),
+  ('The Picture of Dorian Gray', 'This is the story of a man who cannot see himself in paint. You get it ? Go read it !'),
+  ('The Lord of the Rings', 'This is the story of a hobbit who will never want a ring on his finger again. You get it ? Go read it !'),
+  ('Dangerous Liaisons', 'This is the story of two libertines who have as many partners in bed as words on paper. You get it ? Go read it !');
+
 
 COMMIT;
