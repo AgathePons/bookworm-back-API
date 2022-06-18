@@ -27,3 +27,6 @@ sqitch.conf
 # Linux
 **/.directory
 **/*~
+
+# Other
+codeSnap/
