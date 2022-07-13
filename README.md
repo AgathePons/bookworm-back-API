@@ -1,4 +1,7 @@
-# API REST base code to start building an API REST
+
+# API for Bookworm Idle Game project
+
+Find all about this project on **[Dossier_projet.pdf](https://github.com/AgathePons/bookworm-back-API/blob/master/Dossier_projet.pdf)**
 
 ## How to deploy database
 
